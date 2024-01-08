@@ -68,6 +68,10 @@ const Body = () => {
           </div>
         </div>
       </section>
+      <section className={styles.ctaEnd}>
+        <h2>Boost your links today</h2>
+        <a>Get Started</a>
+      </section>
     </main>
   );
 };
