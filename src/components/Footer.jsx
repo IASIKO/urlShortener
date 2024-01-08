@@ -36,7 +36,7 @@ const Footer = () => {
       </div>
       <div className={styles.attribution}>
         <span>Coded by </span>
-        <a href="https://www.linkedin.com/in/giorgi-iaseshvili/">
+        <a target="blank" href="https://www.linkedin.com/in/giorgi-iaseshvili/">
           Giorgi Iaseshvili
         </a>
       </div>
