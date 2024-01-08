@@ -3,6 +3,7 @@ import styles from "../css/components/Body.module.css";
 import recognition from "../assets/icon-brand-recognition.svg";
 import detail from "../assets/icon-detailed-records.svg";
 import fully from "../assets/icon-fully-customizable.svg";
+import Footer from "./Footer";
 
 const Body = () => {
   return (
@@ -72,6 +73,7 @@ const Body = () => {
         <h2>Boost your links today</h2>
         <a>Get Started</a>
       </section>
+      <Footer />
     </main>
   );
 };
