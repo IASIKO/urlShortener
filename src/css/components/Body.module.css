@@ -1,0 +1,103 @@
+.main {
+  height: 482px;
+  background-image: url("../../assets/illustration-working.svg");
+  background-repeat: no-repeat;
+  background-position: top 0 right -20%;
+}
+
+.cta {
+  margin: 0 auto 150px;
+  max-width: 1050px;
+  padding: 80px 20px 0;
+}
+
+.ctaBox {
+  max-width: 550px;
+}
+
+.cta h1 {
+  font-size: 75px;
+  letter-spacing: -3px;
+  line-height: 1.2;
+}
+
+.cta p {
+  color: #9e9aa7;
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
+.cta a {
+  text-decoration: none;
+  background-color: #2acfcf;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 15px 40px;
+  transition: all 0.2s;
+}
+
+.cta a:hover {
+  background-color: #7be4e4;
+}
+
+.urlShortening {
+  margin: 0 auto;
+  max-width: 1050px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 100;
+}
+
+.urlShortening div {
+  background-color: #3b3054;
+  background-image: url(../../assets/bg-shorten-desktop.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+  display: flex;
+  gap: 20px;
+  padding: 50px 60px;
+}
+
+.urlShortening div input {
+  background-color: #fff;
+  color: #232127;
+  flex-grow: 1;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 20px;
+  outline: none;
+  padding: 15px 40px;
+}
+
+.urlShortening div button {
+  background-color: #2acfcf;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 20px;
+  outline: none;
+  padding: 15px 40px;
+  transition: all 0.2s;
+}
+
+.urlShortening div button:hover {
+  background-color: #7be4e4;
+}
+
+.urlShortening p {
+  color: #f46262;
+  font-size: 15px;
+  font-style: italic;
+  left: 9%;
+  position: absolute;
+  top: 75%;
+}

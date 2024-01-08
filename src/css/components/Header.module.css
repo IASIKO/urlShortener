@@ -1,0 +1,58 @@
+.header {
+  align-items: center;
+  color: #9e9aa7;
+  display: flex;
+  font-weight: 700;
+  gap: 40px;
+  margin: 0 auto 70px;
+  max-width: 1050px;
+  padding: 50px 20px 0;
+}
+
+.nav {
+  display: flex;
+  flex-grow: 1;
+}
+
+.navBar {
+  align-items: center;
+  gap: 30px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-grow: 1;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #9e9aa7;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+ul li a:hover {
+  color: #232127;
+}
+
+.login {
+  margin-left: auto;
+}
+
+.signup a {
+  background-color: #2acfcf;
+  border-radius: 50px;
+  color: #fff;
+  padding: 8px 20px;
+  transition: all 0.2s;
+}
+
+.signup a:hover {
+  background-color: #7be4e4;
+  color: #fff;
+}
+
+.iconMenu {
+  display: none;
+}
