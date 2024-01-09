@@ -9,6 +9,22 @@ const Body = () => {
   const [isLink, setIsLink] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [links, setLinks] = useState([]);
+  const [shortenLinks, setShortenLinks] = useState([]);
+
+  const fetchShortenUrl = async () => {
+    const url = "https://spectacular-babka-fa1a16.netlify.app/shorten-url";
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ url: inputValue }),
+    });
+
+    const result = await response.json();
+
+    setShortenLinks([...shortenLinks, result.shortUrl]);
+  };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -17,6 +33,7 @@ const Body = () => {
     } else {
       setIsLink(false);
       setLinks([...links, inputValue]);
+      fetchShortenUrl();
     }
     setInputValue("");
   };
@@ -51,14 +68,9 @@ const Body = () => {
           <ul>
             {links.map((link, i) => (
               <li className={styles.urlList} key={i}>
-                <span className={styles.currentUrl}>
-                  {link}
-                  {i}
-                </span>
+                <span className={styles.currentUrl}>{link}</span>
                 <div className={styles.shortUrlBox}>
-                  <span className={styles.shortUrl}>
-                    hhtps://rel.ink/k4IKyk
-                  </span>
+                  <span className={styles.shortUrl}>{shortenLinks[i]}</span>
                   <button>Copy</button>
                 </div>
               </li>
