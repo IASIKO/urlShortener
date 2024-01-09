@@ -28,7 +28,9 @@ const Body = () => {
 
       setShortenLinks([...shortenLinks, result.shortUrl]);
       setLoading(false);
-    } catch (error) {}
+    } catch (error) {
+      console.log("something went wrong");
+    }
   };
 
   const onSubmitHandler = (e) => {
