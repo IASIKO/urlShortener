@@ -32,29 +32,29 @@
   list-style: none;
 }
 
-ul {
+.footerWrapper ul {
   display: flex;
   flex-direction: column;
   font-size: 15px;
 }
 
-ul::before {
+.footerWrapper ul::before {
   content: attr(aria-label);
   color: #fff;
 }
 
-li {
+.footerWrapper ul li {
   color: #9e9aa7;
   transition: all 0.2s;
   font-size: 15px;
   line-height: 2;
 }
 
-li:first-child {
+.footerWrapper ul li:first-child {
   margin-top: 15px;
 }
 
-li:hover {
+.footerWrapper ul li:hover {
   cursor: pointer;
   color: #2acfcf;
 }
