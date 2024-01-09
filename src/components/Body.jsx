@@ -10,20 +10,25 @@ const Body = () => {
   const [inputValue, setInputValue] = useState("");
   const [links, setLinks] = useState([]);
   const [shortenLinks, setShortenLinks] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const fetchShortenUrl = async () => {
-    const url = "https://spectacular-babka-fa1a16.netlify.app/shorten-url";
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ url: inputValue }),
-    });
+    try {
+      setLoading(true);
+      const url = "https://spectacular-babka-fa1a16.netlify.app/shorten-url";
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ url: inputValue.trim() }),
+      });
 
-    const result = await response.json();
+      const result = await response.json();
 
-    setShortenLinks([...shortenLinks, result.shortUrl]);
+      setShortenLinks([...shortenLinks, result.shortUrl]);
+      setLoading(false);
+    } catch (error) {}
   };
 
   const onSubmitHandler = (e) => {
@@ -61,7 +66,8 @@ const Body = () => {
           />
           <button onClick={onSubmitHandler}>Shorten it!</button>
         </div>
-        {isLink && <p>Please add a link</p>}
+        {isLink && <p className={styles.emptyMes}>Please add a link</p>}
+        {loading && <p className={styles.loader}>Shortening...</p>}
       </section>
       <section className={styles.servicies}>
         <div className={styles.urlDisplay}>

@@ -97,8 +97,17 @@
   background-color: #7be4e4;
 }
 
-.urlShortening p {
+.emptyMes {
   color: #f46262;
+  font-size: 15px;
+  font-style: italic;
+  left: 9%;
+  position: absolute;
+  top: 75%;
+}
+
+.loader {
+  color: #2acfcf;
   font-size: 15px;
   font-style: italic;
   left: 9%;
