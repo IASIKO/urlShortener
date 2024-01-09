@@ -75,6 +75,10 @@
   padding: 15px 40px;
 }
 
+.urlShortening div input:focus {
+  outline: 2px solid #2acfcf;
+}
+
 .urlShortening div button {
   background-color: #2acfcf;
   color: #fff;
@@ -117,6 +121,51 @@
   margin: 0 auto;
   max-width: 1050px;
   padding: 100px 20px 0;
+}
+
+.urlDisplay ul {
+  list-style: none;
+}
+
+.urlList {
+  max-width: 1050px;
+  padding: 20px;
+  margin-top: 15px;
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shortUrlBox {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.shortUrl {
+  color: #2acfcf;
+}
+
+.urlList button {
+  background-color: #2acfcf;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  padding: 7px 20px;
+  margin-right: 0;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.urlList button:hover {
+  background-color: #7be4e4;
 }
 
 .serviceTitle {
@@ -255,6 +304,8 @@
   font-size: 20px;
   font-weight: 700;
   padding: 15px 40px;
+  cursor: pointer;
+  text-decoration: none;
   transition: all 0.2s;
 }
 

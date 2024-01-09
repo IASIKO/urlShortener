@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../css/components/Body.module.css";
 import recognition from "../assets/icon-brand-recognition.svg";
 import detail from "../assets/icon-detailed-records.svg";
@@ -6,6 +6,25 @@ import fully from "../assets/icon-fully-customizable.svg";
 import Footer from "./Footer";
 
 const Body = () => {
+  const [isLink, setIsLink] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const [links, setLinks] = useState([]);
+
+  const onChangeHandler = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    if (!inputValue.length) {
+      setIsLink(true);
+    } else {
+      setIsLink(false);
+      setLinks([...links, inputValue]);
+    }
+    setInputValue("");
+  };
+
   return (
     <main className={styles.main}>
       <section className={styles.cta}>
@@ -20,13 +39,36 @@ const Body = () => {
       </section>
       <section className={styles.urlShortening}>
         <div>
-          <input type="text" placeholder="Shorten a link here..." />
-          <button>Shorten it!</button>
+          <input
+            type="text"
+            placeholder="Shorten a link here..."
+            style={{ outline: isLink && `2px solid #f46262` }}
+            value={inputValue}
+            onChange={onChangeHandler}
+          />
+          <button onClick={onSubmitHandler}>Shorten it!</button>
         </div>
-        <p>Please add a link</p>
+        {isLink && <p>Please add a link</p>}
       </section>
       <section className={styles.servicies}>
-        <div className={styles.urlDisplay}></div>
+        <div className={styles.urlDisplay}>
+          <ul>
+            {links.map((link, i) => (
+              <li className={styles.urlList} key={i}>
+                <span className={styles.currentUrl}>
+                  {link}
+                  {i}
+                </span>
+                <div className={styles.shortUrlBox}>
+                  <span className={styles.shortUrl}>
+                    hhtps://rel.ink/k4IKyk
+                  </span>
+                  <button>Copy</button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
         <div className={styles.serviceTitle}>
           <h2>Advanced Statistics</h2>
           <p>
@@ -71,7 +113,7 @@ const Body = () => {
       </section>
       <section className={styles.ctaEnd}>
         <h2>Boost your links today</h2>
-        <a>Get Started</a>
+        <a href="#">Get Started</a>
       </section>
       <Footer />
     </main>
