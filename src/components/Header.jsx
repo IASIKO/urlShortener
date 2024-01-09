@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <img src={logo} alt="logo" />
-      <div className={styles.nav}>
+      <nav className={styles.nav}>
         <ul className={styles.navBar}>
           <li>
             <a>Features</a>
@@ -24,7 +24,7 @@ const Header = () => {
             <a>Sign up</a>
           </li>
         </ul>
-      </div>
+      </nav>
       <div className={styles.iconMenu}>
         <svg
           version="1.1"

@@ -16,9 +16,12 @@
   filter: invert(1);
 }
 
+.footerWrapper ul {
+  list-style: none;
+}
+
 .features {
   margin-left: auto;
-  list-style: none;
 }
 
 .resources {
@@ -44,6 +47,11 @@ li {
   color: #9e9aa7;
   transition: all 0.2s;
   font-size: 15px;
+  line-height: 2;
+}
+
+li:first-child {
+  margin-top: 15px;
 }
 
 li:hover {
@@ -65,7 +73,7 @@ li:hover {
 }
 
 .socIcons img:hover {
-  filter: invert(#2acfcf);
+  color: #2acfcf;
 }
 
 .attribution {

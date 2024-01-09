@@ -14,15 +14,16 @@
   flex-grow: 1;
 }
 
-.navBar {
-  align-items: center;
-  gap: 30px;
-}
-
 ul {
-  list-style: none;
   display: flex;
   flex-grow: 1;
+  list-style: none;
+}
+
+.navBar {
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
 }
 
 ul li a {
