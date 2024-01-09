@@ -10,13 +10,9 @@ const Body = () => {
   const [inputValue, setInputValue] = useState("");
   const [links, setLinks] = useState([]);
 
-  const onChangeHandler = (e) => {
-    setInputValue(e.target.value);
-  };
-
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    if (!inputValue.length) {
+    if (!inputValue.trim().length) {
       setIsLink(true);
     } else {
       setIsLink(false);
@@ -44,7 +40,7 @@ const Body = () => {
             placeholder="Shorten a link here..."
             style={{ outline: isLink && `2px solid #f46262` }}
             value={inputValue}
-            onChange={onChangeHandler}
+            onChange={(e) => setInputValue(e.target.value)}
           />
           <button onClick={onSubmitHandler}>Shorten it!</button>
         </div>
