@@ -85,7 +85,7 @@ const Body = () => {
         </div>
         {isLink && (
           <p className={styles.emptyMes}>
-            {error.length > 0 ? error : `Please add a link`}
+            {error.length ? error : `Please add a link`}
           </p>
         )}
         {loading && <p className={styles.loader}>Shortening...</p>}
@@ -95,7 +95,7 @@ const Body = () => {
           <ul>
             {links.map((link, i) => (
               <React.Fragment key={i}>
-                {!loading && !error.length && (
+                {!loading && (
                   <li className={styles.urlList}>
                     <span className={styles.currentUrl}>{link}</span>
                     <div className={styles.shortUrlBox}>
