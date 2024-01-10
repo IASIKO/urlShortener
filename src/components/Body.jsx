@@ -11,25 +11,38 @@ const Body = () => {
   const [links, setLinks] = useState([]);
   const [shortenLinks, setShortenLinks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const errorChecker = () => {
+    if (!inputValue.includes("http://") && !inputValue.includes("https://")) {
+      setError("Please add a protocol http:// or https:// to your URL");
+      return true;
+    }
+    setError("");
+    return false;
+  };
 
   const fetchShortenUrl = async () => {
-    try {
-      setLoading(true);
-      const url = "https://spectacular-babka-fa1a16.netlify.app/shorten-url";
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ url: inputValue.trim() }),
-      });
+    if (!errorChecker()) {
+      try {
+        setLoading(true);
+        const url = "https://spectacular-babka-fa1a16.netlify.app/shorten-url";
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ url: inputValue.trim() }),
+        });
 
-      const result = await response.json();
+        const result = await response.json();
 
-      setShortenLinks([...shortenLinks, result.shortUrl]);
-      setLoading(false);
-    } catch (error) {
-      console.log("something went wrong");
+        setShortenLinks([...shortenLinks, result.shortUrl]);
+        setLoading(false);
+      } catch (error) {
+        setError(`An error has occured while shortening URL`);
+        setLoading(false);
+      }
     }
   };
 
@@ -39,7 +52,9 @@ const Body = () => {
       setIsLink(true);
     } else {
       setIsLink(false);
-      setLinks([...links, inputValue]);
+      if (!errorChecker()) {
+        setLinks([...links, inputValue]);
+      }
       fetchShortenUrl();
     }
     setInputValue("");
@@ -68,20 +83,28 @@ const Body = () => {
           />
           <button onClick={onSubmitHandler}>Shorten it!</button>
         </div>
-        {isLink && <p className={styles.emptyMes}>Please add a link</p>}
+        {isLink && (
+          <p className={styles.emptyMes}>
+            {error.length > 0 ? error : `Please add a link`}
+          </p>
+        )}
         {loading && <p className={styles.loader}>Shortening...</p>}
       </section>
       <section className={styles.servicies}>
         <div className={styles.urlDisplay}>
           <ul>
             {links.map((link, i) => (
-              <li className={styles.urlList} key={i}>
-                <span className={styles.currentUrl}>{link}</span>
-                <div className={styles.shortUrlBox}>
-                  <span className={styles.shortUrl}>{shortenLinks[i]}</span>
-                  <button>Copy</button>
-                </div>
-              </li>
+              <React.Fragment key={i}>
+                {!loading && !error.length && (
+                  <li className={styles.urlList}>
+                    <span className={styles.currentUrl}>{link}</span>
+                    <div className={styles.shortUrlBox}>
+                      <span className={styles.shortUrl}>{shortenLinks[i]}</span>
+                      <button>Copy</button>
+                    </div>
+                  </li>
+                )}
+              </React.Fragment>
             ))}
           </ul>
         </div>
