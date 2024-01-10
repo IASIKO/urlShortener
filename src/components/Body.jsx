@@ -6,7 +6,6 @@ import fully from "../assets/icon-fully-customizable.svg";
 import Footer from "./Footer";
 
 const Body = () => {
-  const [isLink, setIsLink] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [links, setLinks] = useState([]);
   const [shortenLinks, setShortenLinks] = useState([]);
@@ -17,12 +16,10 @@ const Body = () => {
 
   const errorChecker = () => {
     if (!inputValue.includes("http://") && !inputValue.includes("https://")) {
-      setIsLink(true);
       setError("Please add a protocol http:// or https:// to your URL");
       return true;
     }
     setError("");
-    setIsLink(false);
     return false;
   };
 
@@ -43,9 +40,7 @@ const Body = () => {
 
         setShortenLinks([...shortenLinks, result.shortUrl]);
         setError("");
-        setIsLink(false);
       } catch (error) {
-        setIsLink(true);
         setError(`An error has occured while shortening URL`);
       } finally {
         setLoading(false);
@@ -56,9 +51,8 @@ const Body = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     if (!inputValue.trim().length) {
-      setIsLink(true);
+      setError(`Please add a link`);
     } else {
-      setIsLink(false);
       if (!errorChecker()) {
         setLinks([...links, inputValue]);
       }
@@ -100,17 +94,13 @@ const Body = () => {
           <input
             type="text"
             placeholder="Shorten a link here..."
-            style={{ outline: isLink && `2px solid #f46262` }}
+            style={{ outline: error.length > 0 && `2px solid #f46262` }}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
           />
           <button onClick={onSubmitHandler}>Shorten it!</button>
         </div>
-        {isLink && (
-          <p className={styles.errorMes}>
-            {error.length ? error : `Please add a link`}
-          </p>
-        )}
+        <p className={styles.errorMes}>{error.length > 0 && error}</p>
         {loading && <p className={styles.loader}>Shortening...</p>}
       </section>
       <section className={styles.servicies}>
