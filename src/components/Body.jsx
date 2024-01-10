@@ -79,9 +79,6 @@ const Body = () => {
     }
   };
 
-  useEffect(() => {
-  }, [error]);
-
   return (
     <main className={styles.main}>
       <section className={styles.cta}>
