@@ -341,3 +341,8 @@
 .ctaEnd a:hover {
   background-color: #7be4e4;
 }
+
+@media only screen and (max-width: 420px) {
+  
+}
+
