@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../css/components/Body.module.css";
 import recognition from "../assets/icon-brand-recognition.svg";
 import detail from "../assets/icon-detailed-records.svg";
@@ -40,9 +40,10 @@ const Body = () => {
         const result = await response.json();
 
         setShortenLinks([...shortenLinks, result.shortUrl]);
-        setLoading(false);
+        setError("");
       } catch (error) {
         setError(`An error has occured while shortening URL`);
+      } finally {
         setLoading(false);
       }
     }
@@ -78,6 +79,9 @@ const Body = () => {
     }
   };
 
+  useEffect(() => {
+  }, [error]);
+
   return (
     <main className={styles.main}>
       <section className={styles.cta}>
@@ -102,7 +106,7 @@ const Body = () => {
           <button onClick={onSubmitHandler}>Shorten it!</button>
         </div>
         {isLink && (
-          <p className={styles.emptyMes}>
+          <p className={styles.errorMes}>
             {error.length ? error : `Please add a link`}
           </p>
         )}
