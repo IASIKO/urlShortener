@@ -12,6 +12,7 @@ const Body = () => {
   const [shortenLinks, setShortenLinks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [copiedUrl, setCopiedUrl] = useState("");
 
   const errorChecker = () => {
     if (!inputValue.includes("http://") && !inputValue.includes("https://")) {
@@ -60,6 +61,21 @@ const Body = () => {
     setInputValue("");
   };
 
+  const onCopyHandler = async (url) => {
+    try {
+      await navigator.clipboard.writeText(url);
+      const text = await navigator.clipboard.readText();
+
+      if (text === url) {
+        setCopiedUrl(text);
+      } else {
+        alert("URL was not copied! Check the console");
+      }
+    } catch (error) {
+      console.error("Error while copying the URL:", error);
+    }
+  };
+
   return (
     <main className={styles.main}>
       <section className={styles.cta}>
@@ -100,7 +116,14 @@ const Body = () => {
                     <span className={styles.currentUrl}>{link}</span>
                     <div className={styles.shortUrlBox}>
                       <span className={styles.shortUrl}>{shortenLinks[i]}</span>
-                      <button>Copy</button>
+                      <button
+                        onClick={() => onCopyHandler(shortenLinks[i])}
+                        className={`${styles.copyButton} ${
+                          copiedUrl.length && styles.copiedButton
+                        }`}
+                      >
+                        {!copiedUrl.length ? "Copy" : "Copied!"}
+                      </button>
                     </div>
                   </li>
                 )}
