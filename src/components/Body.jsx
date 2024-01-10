@@ -17,10 +17,12 @@ const Body = () => {
 
   const errorChecker = () => {
     if (!inputValue.includes("http://") && !inputValue.includes("https://")) {
+      setIsLink(true);
       setError("Please add a protocol http:// or https:// to your URL");
       return true;
     }
     setError("");
+    setIsLink(false);
     return false;
   };
 
@@ -41,7 +43,9 @@ const Body = () => {
 
         setShortenLinks([...shortenLinks, result.shortUrl]);
         setError("");
+        setIsLink(false);
       } catch (error) {
+        setIsLink(true);
         setError(`An error has occured while shortening URL`);
       } finally {
         setLoading(false);
