@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../css/components/Header.module.css";
 import logo from "../assets/logo.svg";
 
 const Header = () => {
+  const [toggleBurger, setToggleBurger] = useState(false);
+
   return (
     <div className={styles.header}>
       <img src={logo} alt="logo" />
-      <nav className={styles.nav}>
+      <nav className={`${styles.nav}  ${toggleBurger ? styles.visible : ""}`}>
         <ul className={styles.navBar}>
           <li>
             <a>Features</a>
@@ -25,7 +27,10 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <div className={styles.iconMenu}>
+      <div
+        className={styles.iconMenu}
+        onClick={() => setToggleBurger(!toggleBurger)}
+      >
         <svg
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"

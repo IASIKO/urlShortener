@@ -17,11 +17,9 @@
 .nav ul {
   display: flex;
   flex-grow: 1;
-  list-style: none;
 }
 
 .navBar {
-  flex-direction: row;
   align-items: center;
   gap: 30px;
 }
@@ -56,9 +54,10 @@ ul li a:hover {
 
 .iconMenu {
   display: none;
+  cursor: pointer;
 }
 
-@media only screen and (max-width: 420px) {
+@media (max-width: 425px) {
   .header {
     justify-content: space-between;
     position: relative;
@@ -71,17 +70,21 @@ ul li a:hover {
   .nav {
     background-color: #3b3054;
     border-radius: 10px;
-    /* display: none; */
+    display: none;
     left: 5%;
+    right: 5%;
     padding: 30px;
     position: absolute;
     top: 115%;
-    width: 90%;
+    width: 75%;
+  }
+
+  .visible {
+    display: block;
   }
 
   .navBar {
     flex-direction: column;
-    font-size: 18px;
     letter-spacing: 1px;
   }
 
@@ -90,16 +93,18 @@ ul li a:hover {
   }
 
   .login {
+    text-align: center;
+    width: 100%;
     border-top: 1px solid hsla(0, 0%, 50%, 0.5);
     margin: 0;
     padding-top: 30px;
   }
 
   .signup {
+    text-align: center;
     width: 100%;
   }
   .signup a {
-    text-align: center;
     width: 100%;
   }
 
