@@ -88,7 +88,18 @@
   text-decoration: none;
 }
 
-
 @media (max-width: 425px) {
-  
+  .footerWrapper {
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .features {
+    margin: auto;
+  }
+
+  .socIcons {
+    align-self: center;
+  }
 }
