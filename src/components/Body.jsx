@@ -105,25 +105,21 @@ const Body = () => {
       <section className={styles.servicies}>
         <div className={styles.urlDisplay}>
           <ul>
-            {links.map((link, i) => (
-              <React.Fragment key={i}>
-                {!loading && (
-                  <li className={styles.urlList}>
-                    <span className={styles.currentUrl}>{link}</span>
-                    <div className={styles.shortUrlBox}>
-                      <span className={styles.shortUrl}>{shortenLinks[i]}</span>
-                      <button
-                        onClick={() => onCopyHandler(shortenLinks[i], i)}
-                        className={`${styles.copyButton} ${
-                          copiedIndex === i && styles.copiedButton
-                        }`}
-                      >
-                        {copiedIndex === i ? "Copied!" : "Copy"}
-                      </button>
-                    </div>
-                  </li>
-                )}
-              </React.Fragment>
+            {shortenLinks.map((link, i) => (
+              <li className={styles.urlList} key={i}>
+                <span className={styles.currentUrl}>{links[i]}</span>
+                <div className={styles.shortUrlBox}>
+                  <span className={styles.shortUrl}>{link}</span>
+                  <button
+                    onClick={() => onCopyHandler(link, i)}
+                    className={`${styles.copyButton} ${
+                      copiedIndex === i && styles.copiedButton
+                    }`}
+                  >
+                    {copiedIndex === i ? "Copied!" : "Copy"}
+                  </button>
+                </div>
+              </li>
             ))}
           </ul>
         </div>
