@@ -341,7 +341,7 @@
   background-color: #7be4e4;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 432px) {
   .main {
     background-position: top 0 right 120%;
     background-size: 120%;

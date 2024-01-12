@@ -88,7 +88,7 @@
   text-decoration: none;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 432px) {
   .footerWrapper {
     align-items: center;
     flex-direction: column;

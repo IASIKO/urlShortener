@@ -57,7 +57,7 @@ ul li a:hover {
   cursor: pointer;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 432px) {
   .header {
     justify-content: space-between;
     position: relative;
