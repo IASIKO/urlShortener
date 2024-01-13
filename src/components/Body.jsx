@@ -4,16 +4,16 @@ import recognition from "../assets/icon-brand-recognition.svg";
 import detail from "../assets/icon-detailed-records.svg";
 import fully from "../assets/icon-fully-customizable.svg";
 
+
 const Body = () => {
   const [inputValue, setInputValue] = useState("");
   const [links, setLinks] = useState([]);
   const [shortenLinks, setShortenLinks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [copiedUrl, setCopiedUrl] = useState("");
   const [copiedIndex, setCopiedIndex] = useState(null);
 
-  const errorChecker = () => {
+  const isValid = () => {
     if (!inputValue.includes("http://") && !inputValue.includes("https://")) {
       setError("Please add a protocol http:// or https:// to your URL");
       return true;
@@ -23,7 +23,7 @@ const Body = () => {
   };
 
   const fetchShortenUrl = async () => {
-    if (!errorChecker()) {
+    if (!isValid()) {
       try {
         setLoading(true);
         const url = "https://spectacular-babka-fa1a16.netlify.app/shorten-url";
@@ -52,7 +52,7 @@ const Body = () => {
     if (!inputValue.trim().length) {
       setError(`Please add a link`);
     } else {
-      if (!errorChecker()) {
+      if (!isValid()) {
         setLinks([...links, inputValue]);
       }
       fetchShortenUrl();
@@ -66,7 +66,6 @@ const Body = () => {
       const text = await navigator.clipboard.readText();
 
       if (text === url) {
-        setCopiedUrl(text);
         setCopiedIndex(index);
       } else {
         alert("URL was not copied! Check the console");
