@@ -82,11 +82,9 @@ export const useShortening = () => {
     }
   };
 
-  console.log(links);
-
   return {
-    links: links.longLinks,
-    shortenLinks: links.shortLinks,
+    longLinks: links.longLinks,
+    shortLinks: links.shortLinks,
     inputValue,
     handleChange,
     onSubmitHandler,

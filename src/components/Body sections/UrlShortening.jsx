@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../css/components/Body sections/UrlShortening.module.css";
 import { useShortening } from "../../hooks/useShortening";
-import Services from '../Body sections/Services'
+import Services from "../Body sections/Services";
 
 const UrlShortening = () => {
   const {
@@ -10,8 +10,8 @@ const UrlShortening = () => {
     onSubmitHandler,
     loading,
     error,
-    links,
-    shortenLinks,
+    longLinks,
+    shortLinks,
     onCopyHandler,
     copiedIndex,
   } = useShortening();
@@ -35,9 +35,9 @@ const UrlShortening = () => {
       <section className={styles.servicies}>
         <div className={styles.urlDisplay}>
           <ul>
-            {shortenLinks.map((link, i) => (
+            {shortLinks.map((link, i) => (
               <li className={styles.urlList} key={i}>
-                <span className={styles.currentUrl}>{links[i]}</span>
+                <span className={styles.currentUrl}>{longLinks[i]}</span>
                 <div className={styles.shortUrlBox}>
                   <span className={styles.shortUrl}>{link}</span>
                   <button
