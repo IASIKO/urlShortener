@@ -193,11 +193,6 @@
 }
 
 @media (max-width: 432px) {
-  .main {
-    background-position: top 0 right 120%;
-    background-size: 120%;
-  }
-
   .servicies {
     margin-top: -110px;
   }
