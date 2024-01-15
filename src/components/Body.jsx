@@ -1,79 +1,21 @@
-import React, { useEffect, useState } from "react";
 import styles from "../css/components/Body.module.css";
 import recognition from "../assets/icon-brand-recognition.svg";
 import detail from "../assets/icon-detailed-records.svg";
 import fully from "../assets/icon-fully-customizable.svg";
-
+import { useShortening } from "../hooks/useShortening";
 
 const Body = () => {
-  const [inputValue, setInputValue] = useState("");
-  const [links, setLinks] = useState([]);
-  const [shortenLinks, setShortenLinks] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [copiedIndex, setCopiedIndex] = useState(null);
-
-  const isValid = () => {
-    if (!inputValue.includes("http://") && !inputValue.includes("https://")) {
-      setError("Please add a protocol http:// or https:// to your URL");
-      return true;
-    }
-    setError("");
-    return false;
-  };
-
-  const fetchShortenUrl = async () => {
-    if (!isValid()) {
-      try {
-        setLoading(true);
-        const url = "https://spectacular-babka-fa1a16.netlify.app/shorten-url";
-        const response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ url: inputValue.trim() }),
-        });
-
-        const result = await response.json();
-
-        setShortenLinks([...shortenLinks, result.shortUrl]);
-        setError("");
-      } catch (error) {
-        setError(`An error has occured while shortening URL`);
-      } finally {
-        setLoading(false);
-      }
-    }
-  };
-
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    if (!inputValue.trim().length) {
-      setError(`Please add a link`);
-    } else {
-      if (!isValid()) {
-        setLinks([...links, inputValue]);
-      }
-      fetchShortenUrl();
-    }
-    setInputValue("");
-  };
-
-  const onCopyHandler = async (url, index) => {
-    try {
-      await navigator.clipboard.writeText(url);
-      const text = await navigator.clipboard.readText();
-
-      if (text === url) {
-        setCopiedIndex(index);
-      } else {
-        alert("URL was not copied! Check the console");
-      }
-    } catch (error) {
-      console.error("Error while copying the URL:", error);
-    }
-  };
+  const {
+    links,
+    shortenLinks,
+    inputValue,
+    handleChange,
+    onSubmitHandler,
+    onCopyHandler,
+    loading,
+    error,
+    copiedIndex,
+  } = useShortening();
 
   return (
     <main className={styles.main}>
@@ -94,7 +36,7 @@ const Body = () => {
             placeholder="Shorten a link here..."
             style={{ outline: error.length > 0 && `2px solid #f46262` }}
             value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+            onChange={handleChange}
           />
           <button onClick={onSubmitHandler}>Shorten it!</button>
         </div>
