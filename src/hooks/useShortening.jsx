@@ -82,7 +82,9 @@ export const useShortening = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem("links", JSON.stringify(links));
+    if (links.longLinks.length && links.shortLinks.length) {
+      localStorage.setItem("links", JSON.stringify(links));
+    }
   }, [links]);
 
   useEffect(() => {
@@ -91,8 +93,7 @@ export const useShortening = () => {
       setLinks(storedLinkes);
     }
   }, []);
-  
-  console.log(links);
+
   return {
     longLinks: links.longLinks,
     shortLinks: links.shortLinks,
