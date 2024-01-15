@@ -1,49 +1,12 @@
-main {
+.main {
   background-image: url("../../assets/illustration-working.svg");
   background-repeat: no-repeat;
   background-position: top 0 right -20%;
-}
-
-.ctaEnd {
-  background-color: #3b3054;
-  background-image: url(../../assets/bg-boost-desktop.svg);
-  background-size: cover;
-  padding: 50px 0;
-  text-align: center;
-}
-
-.ctaEnd h2 {
-  color: #fff;
-  margin-bottom: 20px;
-  font-size: 38px;
-  text-align: center;
-}
-
-.ctaEnd a {
-  background-color: #2acfcf;
-  border: none;
-  border-radius: 50px;
-  color: #fff;
-  display: inline-block;
-  font-size: 20px;
-  font-weight: 700;
-  padding: 15px 40px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.ctaEnd a:hover {
-  background-color: #7be4e4;
 }
 
 @media (max-width: 432px) {
   .main {
     background-position: top 0 right 120%;
     background-size: 120%;
-  }
-
-  .ctaEnd h2 {
-    font-size: 30px;
   }
 }
