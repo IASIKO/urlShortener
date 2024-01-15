@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "../../css/components/Body sections/UrlShortening.module.css";
-
 import { useShortening } from "../../hooks/useShortening";
-import Services from "../Body sections/Services";
+import Services from "./Servicess";
 
 const UrlShortening = () => {
   const {
