@@ -1,9 +1,13 @@
 import { useState } from "react";
 
+const initialState = {
+  longLinks: [],
+  shortLinks: [],
+};
+
 export const useShortening = () => {
   const [inputValue, setInputValue] = useState("");
-  const [links, setLinks] = useState([]);
-  const [shortenLinks, setShortenLinks] = useState([]);
+  const [links, setLinks] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [copiedIndex, setCopiedIndex] = useState(null);
@@ -32,10 +36,10 @@ export const useShortening = () => {
 
         const result = await response.json();
 
-        setShortenLinks((prevShortenLinks) => [
-          ...prevShortenLinks,
-          result.shortUrl,
-        ]);
+        setLinks((prevLinks) => ({
+          longLinks: [...prevLinks.longLinks],
+          shortLinks: [...prevLinks.shortLinks, result.shortUrl],
+        }));
         setError("");
       } catch (error) {
         setError(`An error has occured while shortening URL`);
@@ -53,7 +57,10 @@ export const useShortening = () => {
       setError(`Please add a link`);
     } else {
       if (!isValid()) {
-        setLinks((prevLinks) => [...prevLinks, inputValue]);
+        setLinks((prevLinks) => ({
+          longLinks: [...prevLinks.longLinks, inputValue],
+          shortLinks: [...prevLinks.shortLinks],
+        }));
       }
       fetchShortenUrl();
     }
@@ -75,9 +82,11 @@ export const useShortening = () => {
     }
   };
 
+  console.log(links);
+
   return {
-    links,
-    shortenLinks,
+    links: links.longLinks,
+    shortenLinks: links.shortLinks,
     inputValue,
     handleChange,
     onSubmitHandler,
