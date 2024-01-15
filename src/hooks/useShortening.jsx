@@ -32,7 +32,10 @@ export const useShortening = () => {
 
         const result = await response.json();
 
-        setShortenLinks([...shortenLinks, result.shortUrl]);
+        setShortenLinks((prevShortenLinks) => [
+          ...prevShortenLinks,
+          result.shortUrl,
+        ]);
         setError("");
       } catch (error) {
         setError(`An error has occured while shortening URL`);
@@ -50,7 +53,7 @@ export const useShortening = () => {
       setError(`Please add a link`);
     } else {
       if (!isValid()) {
-        setLinks([...links, inputValue]);
+        setLinks((prevLinks) => [...prevLinks, inputValue]);
       }
       fetchShortenUrl();
     }
