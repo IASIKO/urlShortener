@@ -4,37 +4,15 @@ import detail from "../assets/icon-detailed-records.svg";
 import fully from "../assets/icon-fully-customizable.svg";
 import { useShortening } from "../hooks/useShortening";
 import Cta from "./Body sections/Cta";
+import UrlShortening from "./Body sections/UrlShortening";
 
 const Body = () => {
-  const {
-    links,
-    shortenLinks,
-    inputValue,
-    handleChange,
-    onSubmitHandler,
-    onCopyHandler,
-    loading,
-    error,
-    copiedIndex,
-  } = useShortening();
+  const { links, shortenLinks, onCopyHandler, copiedIndex } = useShortening();
 
   return (
     <main className={styles.main}>
       <Cta />
-      <section className={styles.urlShortening}>
-        <div>
-          <input
-            type="text"
-            placeholder="Shorten a link here..."
-            style={{ outline: error.length > 0 && `2px solid #f46262` }}
-            value={inputValue}
-            onChange={handleChange}
-          />
-          <button onClick={onSubmitHandler}>Shorten it!</button>
-        </div>
-        <p className={styles.errorMes}>{error.length > 0 && error}</p>
-        {loading && <p className={styles.loader}>Shortening...</p>}
-      </section>
+      <UrlShortening />
       <section className={styles.servicies}>
         <div className={styles.urlDisplay}>
           <ul>
