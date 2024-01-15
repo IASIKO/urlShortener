@@ -88,6 +88,21 @@
 
 .urlDisplay ul {
   list-style: none;
+  overflow-y: auto;
+  max-height: 350px;
+}
+
+.urlDisplay ul::-webkit-scrollbar {
+  width: 10px;
+}
+
+.urlDisplay ul::-webkit-scrollbar-thumb {
+  background-color: #3b3054;
+  border-radius: 10px;
+}
+
+.urlDisplay ul::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 .urlList {
