@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const initialState = {
   longLinks: [],
@@ -22,7 +22,7 @@ export const useShortening = () => {
   };
 
   const fetchShortenUrl = async () => {
-    if (!isValid()) return;
+    if (isValid()) return;
     try {
       setLoading(true);
       const url = "https://spectacular-babka-fa1a16.netlify.app/shorten-url";
@@ -80,6 +80,15 @@ export const useShortening = () => {
       console.error("Error while copying the URL:", error);
     }
   };
+
+  useEffect(() => {
+    localStorage.setItem("links", JSON.stringify(links));
+  }, [links]);
+
+  useEffect(() => {
+    const getLinks = JSON.parse(localStorage.getItem("links"));
+    setLinks(getLinks);
+  }, []);
 
   return {
     longLinks: links.longLinks,
