@@ -3,6 +3,7 @@ import recognition from "../assets/icon-brand-recognition.svg";
 import detail from "../assets/icon-detailed-records.svg";
 import fully from "../assets/icon-fully-customizable.svg";
 import { useShortening } from "../hooks/useShortening";
+import Cta from "./Body sections/Cta";
 
 const Body = () => {
   const {
@@ -19,16 +20,7 @@ const Body = () => {
 
   return (
     <main className={styles.main}>
-      <section className={styles.cta}>
-        <div className={styles.ctaBox}>
-          <h1>More than just shorter links</h1>
-          <p>
-            Build your brand's recognition and get detailed insights on how your
-            links are performing.
-          </p>
-          <a href="#">Get Started</a>
-        </div>
-      </section>
+      <Cta />
       <section className={styles.urlShortening}>
         <div>
           <input

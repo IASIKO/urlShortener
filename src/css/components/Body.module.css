@@ -3,46 +3,6 @@
   background-repeat: no-repeat;
   background-position: top 0 right -20%;
 }
-
-.cta {
-  margin: 0 auto 150px;
-  max-width: 1050px;
-  padding: 80px 20px 0;
-}
-
-.ctaBox {
-  max-width: 550px;
-}
-
-.cta h1 {
-  font-size: 75px;
-  letter-spacing: -3px;
-  line-height: 1.2;
-}
-
-.cta p {
-  color: #9e9aa7;
-  font-size: 20px;
-  margin-bottom: 50px;
-}
-
-.cta a {
-  text-decoration: none;
-  background-color: #2acfcf;
-  border: none;
-  border-radius: 50px;
-  color: #fff;
-  display: inline-block;
-  font-size: 20px;
-  font-weight: 700;
-  padding: 15px 40px;
-  transition: all 0.2s;
-}
-
-.cta a:hover {
-  background-color: #7be4e4;
-}
-
 .urlShortening {
   margin: 0 auto;
   max-width: 1050px;
@@ -346,27 +306,6 @@
     background-position: top 0 right 120%;
     background-size: 120%;
   }
-
-  .cta {
-    margin-bottom: 100px;
-    padding-top: 500px;
-    text-align: center;
-  }
-
-  .ctaBox {
-    max-width: 420px;
-  }
-
-  .cta h1 {
-    font-size: 50px;
-    letter-spacing: -1px;
-    margin-bottom: 15px;
-  }
-
-  .cta p {
-    font-size: 22px;
-  }
-
   .urlShortening {
     margin: 0 auto;
     max-width: 1050px;
