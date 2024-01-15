@@ -22,30 +22,29 @@ export const useShortening = () => {
   };
 
   const fetchShortenUrl = async () => {
-    if (!isValid()) {
-      try {
-        setLoading(true);
-        const url = "https://spectacular-babka-fa1a16.netlify.app/shorten-url";
-        const response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ url: inputValue.trim() }),
-        });
+    if (!isValid()) return;
+    try {
+      setLoading(true);
+      const url = "https://spectacular-babka-fa1a16.netlify.app/shorten-url";
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ url: inputValue.trim() }),
+      });
 
-        const result = await response.json();
+      const result = await response.json();
 
-        setLinks((prevLinks) => ({
-          longLinks: [...prevLinks.longLinks],
-          shortLinks: [...prevLinks.shortLinks, result.shortUrl],
-        }));
-        setError("");
-      } catch (error) {
-        setError(`An error has occured while shortening URL`);
-      } finally {
-        setLoading(false);
-      }
+      setLinks((prevLinks) => ({
+        longLinks: [...prevLinks.longLinks],
+        shortLinks: [...prevLinks.shortLinks, result.shortUrl],
+      }));
+      setError("");
+    } catch (error) {
+      setError(`An error has occured while shortening URL`);
+    } finally {
+      setLoading(false);
     }
   };
 
