@@ -282,14 +282,19 @@
     padding: 15px 30px;
   }
 
+  .urlShortening div button {
+    margin-top: 10px;
+  }
+
   .errorMes {
+    width: 300px;
     left: 13%;
-    top: 46%;
+    top: 40%;
   }
 
   .loader {
     left: 13%;
-    top: 87%;
+    top: 90%;
   }
   .servicies {
     margin-top: -110px;
