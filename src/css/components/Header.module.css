@@ -112,3 +112,9 @@ ul li a:hover {
     display: block;
   }
 }
+
+@media only screen and (min-width: 432px) and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+  }
+}

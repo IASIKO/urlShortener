@@ -161,3 +161,11 @@
     width: 100px;
   }
 }
+
+@media (max-width: 768px) {
+  .serviceBoxes {
+    align-items: center;
+    flex-direction: column;
+    gap: 120px;
+  }
+}

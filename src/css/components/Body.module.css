@@ -10,3 +10,10 @@
     background-size: 120%;
   }
 }
+
+@media (max-width: 768px) {
+  .main {
+    background-position: top 0 right 200%;
+    background-size: 120%;
+  }
+}

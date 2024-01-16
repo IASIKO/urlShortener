@@ -383,3 +383,27 @@
     width: 100px;
   }
 }
+
+@media (max-width: 768px) {
+  .currentUrl {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+  }
+
+  .urlShortening div {
+    gap: 10px;
+    padding: 30px 20px;
+  }
+
+  .urlShortening div input {
+    padding: 15px 10px;
+  }
+
+  .urlShortening div button {
+    font-size: 20px;
+    outline: none;
+    padding: 15px 15px;
+  }
+}

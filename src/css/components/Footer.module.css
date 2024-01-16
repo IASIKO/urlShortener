@@ -103,3 +103,26 @@
     align-self: center;
   }
 }
+
+@media (max-width: 768px) {
+  .footerWrapper {
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .features {
+    margin: auto;
+  }
+
+  .socIcons {
+    align-self: center;
+    flex-direction: row;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .socIcons {
+    flex-direction: column;
+  }
+}
